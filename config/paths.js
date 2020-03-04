@@ -56,21 +56,23 @@ const resolveModule = (resolveFn, filePath) => {
   return resolveFn(`${filePath}.js`);
 };
 
+const rootPath = 'src/web'
+
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appBuild: resolveApp(`${rootPath}/build`),
+  appPublic: resolveApp(`${rootPath}/public`),
+  appHtml: resolveApp(`${rootPath}/public/index.html`),
+  appIndexJs: resolveModule(resolveApp, `${rootPath}/index`),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
-  proxySetup: resolveApp('src/setupProxy.js'),
+  testsSetup: resolveModule(resolveApp, `${rootPath}/setupTests`),
+  proxySetup: resolveApp(`${rootPath}/setupProxy.js`),
   appNodeModules: resolveApp('node_modules'),
   publicUrlOrPath,
 };
@@ -78,27 +80,28 @@ module.exports = {
 // @remove-on-eject-begin
 const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 
+
 // config before eject: we're in ./node_modules/react-scripts/config/
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appBuild: resolveApp(`${rootPath}/build`),
+  appPublic: resolveApp(`${rootPath}/public`),
+  appHtml: resolveApp(`${rootPath}/public/index.html`),
+  appIndexJs: resolveModule(resolveApp, `${rootPath}/index`),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
-  proxySetup: resolveApp('src/setupProxy.js'),
+  testsSetup: resolveModule(resolveApp, `${rootPath}/setupTests`),
+  proxySetup: resolveApp(`${rootPath}/setupProxy.js`),
   appNodeModules: resolveApp('node_modules'),
   publicUrlOrPath,
   // These properties only exist before ejecting:
   ownPath: resolveOwn('.'),
   ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3
-  appTypeDeclarations: resolveApp('src/react-app-env.d.ts'),
+  appTypeDeclarations: resolveApp(`${rootPath}/react-app-env.d.ts`),
   ownTypeDeclarations: resolveOwn('lib/react-app.d.ts'),
 };
 
